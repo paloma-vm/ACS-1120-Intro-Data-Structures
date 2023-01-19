@@ -14,7 +14,9 @@ def read_words():
     """
     infile = open(filename, "r")
 
-    words_list = infile.readlines()#reads whole dictionary
+    # words_list = infile.readlines()#reads whole dictionary
+    words_list = [line.rstrip() for line in infile] #reads whole dictionary and 
+    # help from https://stackoverflow.com/questions/15233340/getting-rid-of-n-when-using-readlines
 
     infile.close
 
@@ -22,13 +24,35 @@ def read_words():
     print("********************")
     print(random_words)
     print("----------------")
-    
-    for word in random_words:
-        word = word.strip()
-   
-        print(word, end=" ")
 
-    print(".\n")
+#  -----------------------------------------------------------------
+    # for word in random_words:
+    #     word = word.strip()
+    # for i in range(len(random_words)):
+    #     # random_words[i] = random_words[i].strip
+    #     random_words[i].strip
+
+   
+    for i in range(len(random_words[:-1])):
+        # random_words[i] = random_words[i].strip
+        print(random_words[i], end=" ")
+    # for i in range(random_words[-1]):
+
+    print(str(random_words[-1]) + ".") #puts the period in the correct place at end of sentence
+
+    # for i in range(len(random_words[:-1])):
+    #     print(random_words[i], end=" ")
+    # print(random_words[-1] + '.') #puts the period in the correct place at end of sentence
+
+    # print(random_words[-1])
+#  -----------------------------------------------------------------
+    # for word in random_words:
+    #     word = word.strip()
+   
+    #     print(word, end=" ")
+
+    # print(".\n")
+#  -----------------------------------------------------------------
 
 # still need to move the period back one space, I'm not sure how
     
