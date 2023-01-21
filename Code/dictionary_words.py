@@ -17,7 +17,7 @@ def read_words():
     # words_list = infile.readlines()#reads whole dictionary
     words_list = [line.rstrip() for line in infile] #reads whole dictionary and 
     # help from https://stackoverflow.com/questions/15233340/getting-rid-of-n-when-using-readlines
-
+    print(words_list)
     infile.close
 
     random_words = random.sample(words_list, k=number_of_words)
