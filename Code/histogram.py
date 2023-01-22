@@ -1,10 +1,7 @@
-import random
-import sys
-import re
 import string
 
 
-source_text = '/Users/palomavaldez-marsh/code/ACS-1120-Intro-Data-Structures/Code/test-text.txt'
+# source_text = '/Users/palomavaldez-marsh/code/ACS-1120-Intro-Data-Structures/Code/test-text.txt'
 # dictionary of 'word' : count
 histogram = {}
 
@@ -44,29 +41,36 @@ def build_histogram(source_text):
 
     # print the histogram dictionary
     for key in list(histogram.keys()):
-        print(key, " ", histogram[key])
+        print(key, ":", histogram[key])
 
-    # random_words = random.sample(words_list, k=number_of_words)
-    # print("********************")
-    # print(words_list)
-    # print("----------------")
+    return histogram
 
-def unique_words():
+def unique_words(histogram):
     """
     description: function that that counts unique words in the histogram
     parameters: histogram
     returns: total count of unique words in the histogram
     """
 
-def frequency():
+    total_unique_words = len(histogram)
+    print('-------------------------------------------------------------')
+    print(f'The histogram contains {total_unique_words} unique words.')
+    return total_unique_words
+
+
+def frequency(word, histogram):
     """
-    description: function that t
+    description: function that tells you how many times a word appears in a histogram
     parameters: word, histogram
     returns: total count of times a word appears in a text
     """
-
+    word_appearances = histogram[word]
+    print(f'The word {word} appears in the histogram {word_appearances} times.')
+    return word_appearances
 
 #  -----------------------------------------------------------------
     
 if __name__ == '__main__':
-    build_histogram(source_text)
+    build_histogram('test-text.txt')
+    unique_words(histogram)
+    frequency('rabbit', histogram)
