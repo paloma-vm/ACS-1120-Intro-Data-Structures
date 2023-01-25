@@ -1,4 +1,5 @@
 import string
+import random
 
 
 # source_text = '/Users/palomavaldez-marsh/code/ACS-1120-Intro-Data-Structures/Code/test-text.txt'
@@ -69,8 +70,27 @@ def frequency(word, histogram):
     return word_appearances
 
 #  -----------------------------------------------------------------
-    
+# sample
+def sample(histogram):
+    """
+    description: function that takes a histogram and returns a single random word
+    parameters: histogram
+    returns: single word selected at random from histogram
+    """
+    words = list(histogram.keys()) # convert dict_keys object to a list
+    # ^ help from https://blog.finxter.com/python-typeerror-dict_keys-not-subscriptable-fix-this-stupid-bug/
+    index = random.randint(0, len(words) - 1)
+    single_random_word = words[index]
+    print("********************")
+    print(f'single random word: {single_random_word}')
+    return single_random_word
+#  -----------------------------------------------------------------
+
+
 if __name__ == '__main__':
-    build_histogram('test-text.txt')
+    build_histogram('worksheet.txt')
     unique_words(histogram)
-    frequency('rabbit', histogram)
+    # frequency('rabbit', histogram)
+    print(histogram)
+    sample(histogram)
+    
