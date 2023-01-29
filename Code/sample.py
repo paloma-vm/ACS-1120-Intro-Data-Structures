@@ -5,6 +5,8 @@ import random
 # source_text = '/Users/palomavaldez-marsh/code/ACS-1120-Intro-Data-Structures/Code/test-text.txt'
 # dictionary of 'word' : count
 histogram = {}
+sample_list = []
+dict_words_and_tokens = {}
 
 
 # read in the words file
@@ -88,6 +90,15 @@ def frequency(word, histogram):
 #     return word_tokens
 
 #  -----------------------------------------------------------------
+def list_to_histogram(list_of_words):
+    for word in list_of_words:
+        if word in dict_words_and_tokens: # check to see if word is in dictionary
+            dict_words_and_tokens[word] = dict_words_and_tokens[word] + 1
+        else:
+            dict_words_and_tokens[word] = 1
+    return dict_words_and_tokens
+
+
 # sample
 def sample(histogram):
     """
@@ -99,8 +110,8 @@ def sample(histogram):
     # ^ help from https://blog.finxter.com/python-typeerror-dict_keys-not-subscriptable-fix-this-stupid-bug/
     index = random.randint(0, len(words) - 1)
     single_random_word = words[index]
-    print("********************")
-    print(f'single random word: {single_random_word}')
+    # print("********************")
+    # print(f'single random word: {single_random_word}')
     return single_random_word
 #  -----------------------------------------------------------------
 def find_expected_probability(histogram):
@@ -120,7 +131,7 @@ def find_expected_probability(histogram):
         # ^ help from https://www.geeksforgeeks.org/python-convert-two-lists-into-a-dictionary/
     # print(words)
     # print(word_tokens)
-    # print(expected_probability_dict)
+    print(expected_probability_dict)
     # print(str(expected_probability_dict))
 
     # print the expected probability dictionary
@@ -130,8 +141,14 @@ def find_expected_probability(histogram):
     return expected_probability_dict
 
 
-def find_sample_probability():
-    pass
+def find_sample_probability(histogram, range_num):
+
+    sample_list = [sample(histogram) for i in range(range_num)]
+    
+    sampled_histogram = list_to_histogram(sample_list)
+    print(sampled_histogram)
+    return sampled_histogram
+
 
 if __name__ == '__main__':
     build_histogram('worksheet.txt')
@@ -142,5 +159,7 @@ if __name__ == '__main__':
     # frequency('dogs', histogram)
     # print(histogram)
     find_expected_probability(histogram)
-   
-    
+    find_sample_probability(histogram, 1000)
+    find_expected_probability(dict_words_and_tokens)
+
+
