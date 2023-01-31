@@ -1,12 +1,14 @@
 import random
 import sys
 
+# class Sentence():
+# sentence = ''
 # filename = 'short-dictionary.txt'
 filename = '/usr/share/dict/words'
 number_of_words = int(sys.argv[1])
 random_words = []
 # read in the words file
-def read_words():
+def read_words(filename, number_of_words):
     """
     A function to read the text file of words, 
     select a random set of words and store in a data type, 
@@ -27,8 +29,10 @@ def read_words():
     for i in range(len(random_words[:-1])):
         print(random_words[i], end=" ")
 
-    print(str(random_words[-1]) + ".") #puts the period in the correct place at end of sentence
+    sentence = print(str(random_words[-1]) + ".") #puts the period in the correct place at end of sentence
 
+    return sentence
     
-if __name__ == '__main__':
-    read_words()
+# if __name__ == '__main__':
+    # read_words()
+    

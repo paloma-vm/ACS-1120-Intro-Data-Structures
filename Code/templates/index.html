@@ -7,6 +7,10 @@
   <title>Tweet Generator</title>
 </head>
 <body>
-    <blockquote>TODO: Replace this text with the sentence you generated!</blockquote>
+    {% block content %}
+    <!-- <blockquote>TODO: Replace this text with the sentence you generated!</blockquote> -->
+    <blockquote>{{generated_sentence}}</blockquote>
+    
+    {% endblock %}
 </body>
 </html>
