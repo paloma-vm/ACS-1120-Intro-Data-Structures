@@ -5,8 +5,10 @@ import sys
 # sentence = ''
 # filename = 'short-dictionary.txt'
 filename = '/usr/share/dict/words'
-number_of_words = int(sys.argv[1])
-random_words = []
+# number_of_words = int(sys.argv[1])
+number_of_words = 6
+
+# random_words = []
 # read in the words file
 def read_words(filename, number_of_words):
     """
@@ -34,5 +36,5 @@ def read_words(filename, number_of_words):
     return sentence
     
 # if __name__ == '__main__':
-    # read_words()
+    # read_words('/usr/share/dict/words', 6)
     

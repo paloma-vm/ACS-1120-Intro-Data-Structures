@@ -100,7 +100,7 @@ def list_to_histogram(list_of_words):
 
 
 # sample
-def sample(histogram):
+def sample(histogram): #random sample
     """
     description: function that takes a histogram and returns a single random word
     parameters: histogram
@@ -141,14 +141,52 @@ def find_expected_probability(histogram):
     return expected_probability_dict
 
 
-def find_sample_probability(histogram, range_num):
+def random_sample_test(histogram, range_num):
 
     sample_list = [sample(histogram) for i in range(range_num)]
     
     sampled_histogram = list_to_histogram(sample_list)
     print(sampled_histogram)
+     # print the expected probability dictionary
+    print('Expected sampled frequencies')
+    print('word    sampled frequency')
+    for key in list(sampled_histogram.keys()):
+        print(key, "   :", sampled_histogram[key])
     return sampled_histogram
 
+def weighted_sample(histogram): #weighted sample
+    """
+    description: function that takes a histogram and returns a single random word 
+        based on frequency weighting
+    parameters: histogram
+    returns: single word selected at random from histogram
+    """
+    # help from sampling worksheet
+    list_word_tokens = list(histogram.values()) # convert dict_values object to a list
+    total_word_tokens = sum(list_word_tokens)
+    # print(f'total word tokens: {total_word_tokens}')
+
+    dart = random.uniform(0, total_word_tokens) # dart on number line
+    
+    fence = 0
+    for word, count in histogram.items():
+        fence += count
+        if fence >= dart:
+            # print(f'random word found with relative probabilty: {word}')
+            return word
+
+def weighted_sample_test(histogram, range_num):
+
+    weighted_sample_list = [weighted_sample(histogram) for i in range(range_num)]
+    
+    weighted_sampled_histogram = list_to_histogram(weighted_sample_list)
+    print(weighted_sampled_histogram)
+     # print the expected probability dictionary
+    print('Weighted Sampled Frequencies')
+    print('word    sampled frequency')  
+    for key in list(weighted_sampled_histogram.keys()):
+        print(key, "   :", weighted_sampled_histogram[key])
+    return weighted_sampled_histogram
 
 if __name__ == '__main__':
     build_histogram('worksheet.txt')
@@ -159,7 +197,8 @@ if __name__ == '__main__':
     # frequency('dogs', histogram)
     # print(histogram)
     find_expected_probability(histogram)
-    find_sample_probability(histogram, 1000)
-    find_expected_probability(dict_words_and_tokens)
-
-
+    random_sample_test(histogram, 1000)
+    # find_expected_probability(dict_words_and_tokens)
+    # find_sample_probability(dict_words_and_tokens, 1000)
+    weighted_sample(histogram)
+    weighted_sample_test(histogram, 1000)

@@ -2,7 +2,7 @@
 from flask import Flask, render_template
 import random
 import sys
-import sentence
+from sentence import read_words
 
 
 app = Flask(__name__)
@@ -19,14 +19,14 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    # filename = '/usr/share/dict/words'
-    # number_of_words = int(sys.argv[1])
+    filename = '/usr/share/dict/words'
+    number_of_words = 6
     # random_words = []
-    generated_sentence = sentence.read_words('/usr/share/dict/words', 6)
+    generated_sentence = read_words(filename, number_of_words)
     print(generated_sentence)
     return print(f"<p>{generated_sentence}</p>")
     
-    return sentence.read_words('/usr/share/dict/words', 6)
+    # return read_words('/usr/share/dict/words', 6)
     # context = {
     #     'filename': filename,
     #     'number_of_words': number_of_words,

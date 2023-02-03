@@ -41,6 +41,44 @@ def read_words():
 #     for word in random_words:
 #         print(word, end=' ')
 #     print(".\n")
+
+# ------------------------------------------------
+def find_expected_probability(histogram):
+    """
+    description: function that takes a histogram and returns the expected probabilities
+    of each word being selected when the histogram is sampled
+    parameters: histogram
+    returns: probabilities of each word being in the sample
+    """
+   
+    words = list(histogram.keys()) # convert dict_keys object to a list
+    list_word_tokens = list(histogram.values()) # convert dict_values object to a list
+    total_word_tokens = sum(list_word_tokens)
+    print(total_word_tokens)
+    dart = random.uniform(0, total_word_tokens) # dart on number line
+    
+    fence = 0
+    for word, count in histogram:
+        fence += count
+        if fence >= dart:
+            print(word)
+            return word
+
+
+    for i in range(len(list_word_tokens)):
+        list_word_tokens[i] = list_word_tokens[i] / total_word_tokens
+    expected_probability_dict = dict(zip(words, word_tokens))
+        # ^ help from https://www.geeksforgeeks.org/python-convert-two-lists-into-a-dictionary/
+    # print(words)
+    # print(word_tokens)
+    print(expected_probability_dict)
+    # print(str(expected_probability_dict))
+
+    # print the expected probability dictionary
+    print('word    expected probability')
+    for key in list(expected_probability_dict.keys()):
+        print(key, "   :", expected_probability_dict[key])
+    return expected_probability_dict
     
 if __name__ == '__main__':
     read_words()
