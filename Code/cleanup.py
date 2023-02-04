@@ -9,5 +9,5 @@ def cleanup(filename):
     infile.close
     return words_list
 
-if __name__ == "__main__":
-    cleanup(filename)
+# if __name__ == "__main__":
+#     cleanup(filename)

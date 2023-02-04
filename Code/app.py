@@ -3,8 +3,8 @@ from flask import Flask, render_template
 import random
 import sys
 from sentence import read_words
-from cleanup import cleanup
-import salutations
+import cleanup
+
 
 
 app = Flask(__name__)
@@ -12,11 +12,11 @@ app = Flask(__name__)
 # TODO: Initialize your histogram, hash table, or markov chain here.
 # Any code placed here will run only once, when the server starts.
 
-filename = str(sys.argv[1])
-words_list = cleanup.cleanup(filename)
-print(words_list)
-cleanup(filename)
-salutations.greet("Paloma")
+
+# words_list = cleanup.cleanup(filename)
+
+
+
 
 
 # -------------------------------------------------------------
@@ -51,4 +51,7 @@ if __name__ == "__main__":
        To learn more about Flask's DEBUG mode, visit
        https://flask.palletsprojects.com/en/2.0.x/server/#in-code"""
     app.run(debug=True)
+    filename = str(sys.argv[1])
+    words_list = cleanup.cleanup(filename)
+    print(words_list)
     
