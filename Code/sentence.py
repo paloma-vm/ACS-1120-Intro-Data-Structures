@@ -35,6 +35,7 @@ def read_words(filename, number_of_words):
 
     return sentence
     
-# if __name__ == '__main__':
-    # read_words('/usr/share/dict/words', 6)
+if __name__ == '__main__':
+    read_words('/usr/share/dict/words', 6)
+
     

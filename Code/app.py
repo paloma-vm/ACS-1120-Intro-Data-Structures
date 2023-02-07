@@ -28,7 +28,7 @@ def home():
     # random_words = []
     generated_sentence = read_words(filename, number_of_words)
     print(generated_sentence)
-    return print(f"<p>{generated_sentence}</p>")
+    return f"<p>{generated_sentence}</p>"
     
     # return read_words('/usr/share/dict/words', 6)
     # context = {
@@ -51,7 +51,7 @@ if __name__ == "__main__":
        To learn more about Flask's DEBUG mode, visit
        https://flask.palletsprojects.com/en/2.0.x/server/#in-code"""
     app.run(debug=True)
-    filename = str(sys.argv[1])
-    words_list = cleanup.cleanup(filename)
-    print(words_list)
+    # filename = str(sys.argv[1])
+    # words_list = cleanup.cleanup(filename)
+    # print(words_list)
     
