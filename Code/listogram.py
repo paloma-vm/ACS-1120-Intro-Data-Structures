@@ -21,56 +21,74 @@ class Listogram(list):
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
+        # help from Andrew 
+        word_located = False
 
-        index = self.index_of(word)
-        # index = [word, count]
-        # index = self[word, count]
-        # index = self[i][i]
+        for i in self:
+            if i[0] == word:
+                i[1] += count
+                word_located = True
+                break
 
-        if index is not None:
-            self[index][1] += count #the second index of the index of the word
-            # i.e, the count of [word, count]
-            self.tokens += count
-        # for i in range(0, len(self) -1):
-        # for word, count in self:
-            # if word in self:
-            # # for i in word, count:
-            #     count[i] += count
-            #     self.tokens += count
-        else:
+        if not word_located:
             self.append([word, count])
             self.types += 1
-            self.tokens += count
+
+        self.tokens += count
+
+
+        # was trying to figure out https://datatofish.com/iterate-list-of-lists/
+        # for i in range(len(self)):
+        #     for j in i:
+        #         if j[0] == word:
+        #             j[1] += count
+        #         else:
+        #             self.append([word, count])
+        #             self.types += 1
+        #         self.tokens += count    
+
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
-        index = self.index_of(word)
-        if index is not None:
-            return self[index][1]
-        else:
-            return 0
-
+        for i in self:
+            if i[0] == word:
+                return i[1] 
+            
+        return 0
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
         # TODO: Check if word is in this histogram
-        index = self.index_of(word)
-        if index is not None:
-            return True
-        else:
-            return False
+
+        for i in self:
+            if i[0] == word:
+                return True
         
+        return False
+                 
 
     def index_of(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
         # TODO: Implement linear search to find index of entry with target word
+        for i in range(len(self)):
+            if self[i][0] == target.lower(): # if the first element of each list within the big list
+                                                #is equal to the word (converted to lowercase letters)
+                return i
+            return None
+
 
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
+        dart = random.uniform(0, self.tokens) # dart on number line 
+        fence = 0
+        for word, count in self:
+            fence += count
+            if fence >= dart:
+                return word
 
 
 def print_histogram(word_list):
