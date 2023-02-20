@@ -63,33 +63,40 @@ class HashTable(object):
         """Return the number of key-value entries by traversing its buckets.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all buckets
-        entries = 0
+        length = 0
         for bucket in self.buckets:
             for key, value in bucket.items():
         # TODO: Count number of key-value entries in each bucket
-                entries += 1
-        return entries
+                length += 1
+        return length
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
-        i = self._bucket_index(self, key)
+        i = self._bucket_index(key)
+        bucket = self.buckets[i] # help from Dani's Grain video
+        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
         
         # TODO: Check if key-value entry exists in bucket
-        if self[i].find(self, key):
+        if entry is not None:
             return True
+        else:
+            return False
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         i = self._bucket_index(key)
+        bucket = self.buckets[i] # help from Dani's Grain video
+        entry = bucket.find_if_matches(lambda entry: entry[0] == key) # define matching function inline as a lamda function (anonymous function)
         # TODO: Check if key-value entry exists in bucket
-        if self[i].find(self, key) == True:
-            
+        if entry is not None:
         # TODO: If found, return value associated with given key
-            return self[i].find(self, key)
+            value = entry[1]
+            return value
+         
         # TODO: Otherwise, raise error to tell user get failed
         else:
             raise KeyError('Key not found: {}'.format(key))
@@ -100,25 +107,32 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         i = self._bucket_index(key)
+        bucket = self.buckets[i] # help from Dani's Grain video
+        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
         # TODO: Check if key-value entry exists in bucket
-        if self.buckets[i].find(self.buckets, key):
+        if entry is not None:
         # TODO: If found, update value associated with given key
-            value = self.buckets[i].find(self, key)
-            self.buckets[i][1] = value
+            
+            bucket.delete(entry)
+            bucket.append((key, value)) # update by deleting the entry and adding updated entry
+            return entry
         # TODO: Otherwise, insert given key-value entry into bucket
         else:
-            self.buckets[i].append(key, value)
+            bucket.append((key, value)) # append key:value as a tuple
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         i = self._bucket_index(key)
+        bucket = self.buckets[i] # help from Dani's Grain video
+        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
         # TODO: Check if key-value entry exists in bucket
-        if self.buckets[i].find(self.buckets, key):
+        if entry is not None:
         # TODO: If found, delete entry associated with given key
-            value = self.buckets[i].find(self, key)
-            self.buckets[i].delete(value)
+            # value = entry[1]
+            bucket.delete(entry)
+            # self.delete(bucket)
         # TODO: Otherwise, raise error to tell user delete failed
         else:
             raise KeyError('Key not found: {}'.format(key))

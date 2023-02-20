@@ -101,20 +101,19 @@ class LinkedList:
             node.next = self.head
             self.head = node
             self.size += 1
+    
 
-    def find(self, matcher):
+    def find_if_matches(self, matching_function):
         """Return an item from this linked list if it is present.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
         # node = Node()
         node = self.head # start at the beginning
-        # found = False
-        # i = 0
-        # if node is not None: # while node exists
+       
         while node is not None: # iterate until the end of the list
-            if matcher(node.data):
-                return node.data
+            if matching_function(node.data):
+                return node.data #return the data that matches
             node = node.next
         return None
         #         i += 1
