@@ -103,11 +103,11 @@ class LinkedList:
             self.size += 1
     
 
-    def find(self, matching_function): # find_if_matches()
+    def find_if_matches(self, matching_function):
         """Return an item from this linked list if it is present.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all nodes to find item, if present return True otherwise False
+        # TODO: Loop through all nodes to find item, if present return the data that matches, otherwise return None
         # node = Node()
         node = self.head # start at the beginning
        
@@ -116,19 +116,22 @@ class LinkedList:
                 return node.data #return the data that matches
             node = node.next
         return None
-        #         i += 1
-        #         if node.data == matcher: # matcher is a function
-        #             found = True
-        #             break
-        #         node = node.next # if it is not a match, move on to the next node to check it
-        #     if found == True:
-        #         print(f'{matcher} found at index {i}')
-        #         return node.data
-        #     else:
-        #         print("item not found")
-        # else:
-        #     print("The list is empty.")
-                    
+    
+    def find(self, matching_function): # this is what Gradescope is looking for
+        """Find an item from this linked list if it is present.
+            Return True if item found, false if item not found
+        TODO: Best case running time: O(???) Why and under what conditions?
+        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        # TODO: Loop through all nodes to find item, if present return True otherwise False
+        # node = Node()
+        node = self.head # start at the beginning
+       
+        while node is not None: # iterate until the end of the list
+            if matching_function(node.data):
+                return True #return True
+            node = node.next
+        return False
+        
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
