@@ -123,15 +123,16 @@ class LinkedList:
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
-        # node = Node()
+        match_found = False
         node = self.head # start at the beginning
        
         while node is not None: # iterate until the end of the list
             if matching_function(node.data):
-                return True #return True
+                match_found = True
+                return match_found #return True
             node = node.next
-        return False
-        
+        return match_found # had to return a variable instead of a string?
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
