@@ -103,7 +103,7 @@ class LinkedList:
             self.size += 1
     
 
-    def find_if_matches(self, matching_function):
+    def find(self, matching_function): # find_if_matches()
         """Return an item from this linked list if it is present.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""

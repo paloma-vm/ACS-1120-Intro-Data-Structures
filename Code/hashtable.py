@@ -76,7 +76,7 @@ class HashTable(object):
         # TODO: Find bucket where given key belongs
         i = self._bucket_index(key)
         bucket = self.buckets[i] # help from Dani's Grain video
-        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
+        entry = bucket.find(lambda entry: entry[0] == key)
         
         # TODO: Check if key-value entry exists in bucket
         if entry is not None:
@@ -90,7 +90,7 @@ class HashTable(object):
         # TODO: Find bucket where given key belongs
         i = self._bucket_index(key)
         bucket = self.buckets[i] # help from Dani's Grain video
-        entry = bucket.find_if_matches(lambda entry: entry[0] == key) # define matching function inline as a lamda function (anonymous function)
+        entry = bucket.find(lambda entry: entry[0] == key) # define matching function inline as a lamda function (anonymous function)
         # TODO: Check if key-value entry exists in bucket
         if entry is not None:
         # TODO: If found, return value associated with given key
@@ -108,7 +108,7 @@ class HashTable(object):
         # TODO: Find bucket where given key belongs
         i = self._bucket_index(key)
         bucket = self.buckets[i] # help from Dani's Grain video
-        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
+        entry = bucket.find(lambda entry: entry[0] == key)
         # TODO: Check if key-value entry exists in bucket
         if entry is not None:
         # TODO: If found, update value associated with given key
@@ -126,7 +126,7 @@ class HashTable(object):
         # TODO: Find bucket where given key belongs
         i = self._bucket_index(key)
         bucket = self.buckets[i] # help from Dani's Grain video
-        entry = bucket.find_if_matches(lambda entry: entry[0] == key)
+        entry = bucket.find(lambda entry: entry[0] == key)
         # TODO: Check if key-value entry exists in bucket
         if entry is not None:
         # TODO: If found, delete entry associated with given key
