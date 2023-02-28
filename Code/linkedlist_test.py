@@ -144,6 +144,16 @@ class LinkedListTest(unittest.TestCase):
         assert ll.find_if_matches(lambda item: item > 'B') == 'C'  # Match greater than
         assert ll.find_if_matches(lambda item: item == 'X') is None  # No matching item
 
+# -------------------------------------------------
+# Gradescope test 4.13
+    def test_find(self):
+        ll = LinkedList(['A', 'B', 'C'])
+        assert ll.find('B') == True
+        assert ll.find('A') == True  # Match less than
+        assert ll.find('C') == True  # Match greater than
+        assert ll.find('X') == False   # No matching item
+# -------------------------------------------------
+
     def test_delete_with_3_items(self):
         ll = LinkedList(['A', 'B', 'C'])
         assert ll.head.data == 'A'  # First item

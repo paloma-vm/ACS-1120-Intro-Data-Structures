@@ -50,7 +50,7 @@ class LinkedList:
         return items  # O(1) time to return list
 
     def is_empty(self):
-        """Return a boolean indicating whether this linked list is empty."""
+        """Return a boolean indicating whether this linked list is empty. O(1)"""
         return self.head is None
 
     def length(self):
@@ -66,7 +66,7 @@ class LinkedList:
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(1) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         node =  Node(item)
         # TODO: If self.is_empty() == True set the head and the tail to the new node
@@ -105,8 +105,8 @@ class LinkedList:
 
     def find_if_matches(self, matching_function):
         """Return an item from this linked list if it is present.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) Why and under what conditions?
+        TODO: Worst case running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return the data that matches, otherwise return None
         # node = Node()
         node = self.head # start at the beginning
@@ -117,27 +117,44 @@ class LinkedList:
             node = node.next
         return None
     
-    def find(self, matching_function): # this is what Gradescope is looking for
+# What I had, was not passing the 4.13 Gradescope Test
+
+    # def find(self, matching_function): # this is what Gradescope is looking for
+    #     """Find an item from this linked list if it is present.
+    #         Return True if item found, false if item not found
+    #     TODO: Best case running time: O(1) Why and under what conditions?
+    #     TODO: Worst case running time: O(n) Why and under what conditions?"""
+    #     # TODO: Loop through all nodes to find item, if present return True otherwise False
+    #     match_found = False
+    #     node = self.head # start at the beginning
+       
+    #     while node is not None: # iterate until the end of the list
+    #         if matching_function(node.data): #Error: str is not callable?
+    #             match_found = True
+    #             return match_found #return True
+    #         node = node.next
+    #     return match_found # had to return a variable instead of a string? (no, this wasn't the solution, I will ask)
+
+    # Help from Andrew
+    def find(self, matcher): # this is what Gradescope is looking for
         """Find an item from this linked list if it is present.
             Return True if item found, false if item not found
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) Why and under what conditions?
+        TODO: Worst case running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
-        match_found = False
+        
         node = self.head # start at the beginning
        
         while node is not None: # iterate until the end of the list
-            if matching_function(node.data):
-                match_found = True
-                return match_found #return True
+            if matcher in node.data: # if item is in the data
+                return True
             node = node.next
-        return match_found # had to return a variable instead of a string?
-
-
+        return False
+    
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(1) Why and under what conditions?
+        TODO: Worst case running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes to find one whose data matches given item
         if not self.is_empty():
             if self.head.data == item:
