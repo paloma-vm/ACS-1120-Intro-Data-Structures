@@ -1,4 +1,13 @@
 .body {
     font-size: 25px;
-    background-color: aqua;
+    background-color: rgb(59, 244, 244);
+    font-family: Helvetica;
+}
+
+img {
+    background-color: transparent;
+}
+
+h3 {
+    font-family: Helvetica;
 }
