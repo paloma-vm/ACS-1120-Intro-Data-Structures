@@ -9,7 +9,6 @@ from file_to_words import file_to_words
 from nth_markov import MarkovChain
 
 
-
 app = Flask(__name__)
 
 # TODO: Initialize your histogram, hash table, or markov chain here.
@@ -42,8 +41,10 @@ def home():
     """Route that returns a web page containing the generated text."""
     corpus = file_to_words('text_files/peas.txt')
     markov_chain = MarkovChain(corpus=corpus, order=2)
-    generated_sentence = markov_chain.random_walk(9)
-    return generated_sentence
+    generated_sentence = markov_chain.random_walk(12)
+    # return generated_sentence
+    # print(generated_sentence)
+    return render_template('index.html', generated_sentence=generated_sentence)
 
 
 if __name__ == "__main__":
