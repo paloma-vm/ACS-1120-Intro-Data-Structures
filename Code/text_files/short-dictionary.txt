@@ -1,3 +1,4 @@
+markovstart
 apple
 ball
 cat
@@ -9,3 +10,4 @@ horse
 iguana
 jackrabbit
 koala
+markovend

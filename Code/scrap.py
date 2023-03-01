@@ -79,6 +79,21 @@ def find_expected_probability(histogram):
     for key in list(expected_probability_dict.keys()):
         print(key, "   :", expected_probability_dict[key])
     return expected_probability_dict
+
+
+    def build_2nd_chain(self):
+        """ build 2nd order Markov Chain"""
+        list_of_words = self.corpus
+        chain = {}
+        
+        for i in range (len(list_of_words) - 2): # 2 for 2nd order
+            next_word = list_of_words[i + 1]
+            if list_of_words[i] in chain:
+                chain[list_of_words[i]].append(next_word)
+            else:
+                chain[list_of_words[i]] = [next_word]
+        return chain
+    
     
 if __name__ == '__main__':
     read_words()

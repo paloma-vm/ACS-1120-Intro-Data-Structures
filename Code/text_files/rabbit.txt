@@ -1,5 +1,4 @@
-
-HERE was once a velveteen rabbit, and in the beginning he was really
+markovstart HERE was once a velveteen rabbit, and in the beginning he was really
 splendid. He was fat and bunchy, as a rabbit should be; his coat was
 spotted brown and white, he had real thread whiskers, and his ears
 were lined with pink sateen. On Christmas morning, when he sat wedged
@@ -431,4 +430,4 @@ the Boy thought to himself:
 fever!"
 
 But he never knew that it really was his own Bunny, come back to look
-at the child who had first helped him to be Real.
+at the child who had first helped him to be Real markovend

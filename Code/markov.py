@@ -1,25 +1,24 @@
-"""Find how often a token appears after another token"""
+# TODO: """Find how often a token appears after another token"""
 
-"""First, take corpus and divide into strings based on separation by spaces"""
-corpus = 'fish.txt'
-for word in list_of_words:
+import cleanup
 
-     def add_count(self, word, count=1):
-        """Increase frequency count of given word by given count amount."""
-        # TODO: Increase word frequency by count
-        # help from Andrew 
-        word_located = False
-        new_dict = {}
+corpus = cleanup('text_files/fish.txt') # list of words
+     
+new_dict = {}
+number_of_words = len(corpus)
 
-        for i in list_of_words:
-            if i== word:
-                i[1] += count
-                word_located = True
-                break
+for i in range(len(corpus - 1)):
+    if corpus[i]
 
-        if not word_located:
-            self.append([word, count])
-            self.types += 1
+for i in list_of_words:
+    if i== word:
+        i[1] += count
+        word_located = True
+        break
 
-        self.tokens += count
+if not word_located:
+    self.append([word, count])
+    self.types += 1
+
+self.tokens += count
 

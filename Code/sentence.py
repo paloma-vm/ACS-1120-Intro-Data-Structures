@@ -11,7 +11,8 @@ import string
 
 # random_words = []
 # read in the words file
-def read_words(filename, number_of_words):
+def read_words(filename, number_of_words): #this only works for a list of words, not source text
+    # use make_sentence or file_to_words instead
     """
     A function to read the text file of words, 
     select a random set of words and store in a data type, 
